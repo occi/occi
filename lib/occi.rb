@@ -6,11 +6,12 @@ class Occi
   # +host+: A String with the host to connect.
 
   def initialize options
-    @connection  = Hugs.new(
-      :user      => options[:user],
-      :password  => options[:password],
-      :host      => options[:host],
-      :port      => options[:port] || Some_Port,
+    @connection = Hugs.new(
+      :user     => options[:user],
+      :password => options[:password],
+      :host     => options[:host],
+      :port     => options[:port] || 4567,
+      :type     => options[:type] || :xml,
     )
   end
 
