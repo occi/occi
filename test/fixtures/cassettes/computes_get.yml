@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :get
-    uri: http://fake:d506bd5213c46bd49e16c634754ad70113408252@controller:4567/compute
+    uri: http://fake:d506bd5213c46bd49e16c634754ad70113408252@one.example.com:4567/compute
     body: 
     headers: 
       accept: 

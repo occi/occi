@@ -8,7 +8,7 @@ module Occi
     #%w(compute network storage).each do |mixin|
     %w(pool).each do |mixin|
       require "occi/#{mixin}"
-      include eval "::Occi::#{mixin.capitalize}"
+      include eval "Occi::#{mixin.capitalize}"
     end
 
     ##
@@ -18,7 +18,7 @@ module Occi
     # +host+: A String with the host to connect.
 
     def initialize options
-      @connection = ::Hugs.new(
+      @connection = Hugs.new(
         :user     => options[:user],
         :password => options[:password],
         :host     => options[:host],
