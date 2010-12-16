@@ -1,0 +1,28 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://fake:d506bd5213c46bd49e16c634754ad70113408252@controller:4567/compute
+    body: 
+    headers: 
+      accept: 
+      - application/xml
+      connection: 
+      - keep-alive
+      keep-alive: 
+      - 30
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      content-type: 
+      - text/html;charset=utf-8
+      content-length: 
+      - "48"
+      connection: 
+      - keep-alive
+      server: 
+      - thin 1.2.7 codename No Hup
+    body: "<COMPUTE_COLLECTION></COMPUTE_COLLECTION>       "
+    http_version: "1.1"
