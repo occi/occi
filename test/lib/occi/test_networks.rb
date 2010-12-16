@@ -1,6 +1,6 @@
 require "support"
 
-describe Occi::Networks do
+#describe Occi::Networks do
   describe "#networks_get" do
     it "returns a parsed XML document" do
       ::VCR.use_cassette "networks_get" do
@@ -10,4 +10,4 @@ describe Occi::Networks do
       end
     end
   end
-end
+#end

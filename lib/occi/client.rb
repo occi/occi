@@ -6,7 +6,7 @@ module Occi
     # Include endpoints.
 
     #%w(compute network storage).each do |mixin|
-    %w(networks computes storages).each do |mixin|
+    %w(pool).each do |mixin|
       require "occi/#{mixin}"
       include eval "::Occi::#{mixin.capitalize}"
     end

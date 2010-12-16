@@ -1,6 +1,6 @@
 require "support"
 
-describe Occi::Computes do
+#describe Occi::Computes do
   describe "#computes_get" do
     it "returns a parsed XML document" do
       ::VCR.use_cassette "computes_get" do
@@ -10,4 +10,4 @@ describe Occi::Computes do
       end
     end
   end
-end
+#end

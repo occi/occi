@@ -1,6 +1,6 @@
 require "support"
 
-describe Occi::Storages do
+#describe Occi::Storages do
   describe "#storages_get" do
     it "returns a parsed XML document" do
       ::VCR.use_cassette "storages_get" do
@@ -10,4 +10,4 @@ describe Occi::Storages do
       end
     end
   end
-end
+#end
