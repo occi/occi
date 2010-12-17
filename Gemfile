@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "hugs", "1.3.1"
+gem "hugs", :path => "~/git/hugs"
 
 group :development do
   gem "rake"
