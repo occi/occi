@@ -35,6 +35,7 @@ DEPENDENCIES
   jeweler (~> 1.5.1)
   minitest (~> 2.0.0)
   multipart-post
+  nokogiri (~> 1.4.4)
   rake
   vcr (~> 1.4.0)
   webmock (~> 1.6.1)

@@ -57,26 +57,12 @@ describe Occi::Pool do
       end
 
       it "returns a parsed XML document" do
-        VCR.use_cassette "storages_post_image_upload" do
+        VCR.use_cassette "storages_post" do
           response = Connection.storages_post :upload => @upload
 
           response.body.must_be_kind_of Nokogiri::XML::Document
           response.code.must_equal "201"
         end
-      end
-    end
-
-    describe "" do
-      before do
-        @builder = Nokogiri::XML::Builder.new do
-          STORAGE {
-            ID_ "11"
-            NAME "Centos 5.4 x86_64"
-            TYPE "OS"
-            DESCRIPTION "Centos 5.4 Image"
-            SIZE_ 41943040
-          }
-        end.to_xml
       end
     end
   end
