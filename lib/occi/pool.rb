@@ -1,16 +1,16 @@
 module Occi
   module Pool
     Gets = %w(
-      computes_get
-      networks_get
-      storages_get
-    ).freeze
+      computes
+      networks
+      storages
+    ).map { |v| "#{v}_get" }.freeze
 
     Posts = %w(
-      computes_post
-      networks_post
-      storages_post
-    ).freeze
+      computes
+      networks
+      storages
+    ).map { |v| "#{v}_post" }.freeze
 
     ##
     # The _get methods:
