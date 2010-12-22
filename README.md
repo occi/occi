@@ -8,6 +8,10 @@
 
     gem "occi"
 
+### Examples
+
+See the examples section in the [wiki](http://github.com/retr0h/occi/wiki/Examples).
+
 ## Testing
 
     $ export ONE_USER=$user
