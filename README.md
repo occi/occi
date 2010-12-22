@@ -7,3 +7,10 @@
 ### Bundler
 
     gem "occi"
+
+## Testing
+
+    $ export ONE_USER=$user
+    $ export ONE_PASSWORD=$password
+
+    $ bundle exec rake
