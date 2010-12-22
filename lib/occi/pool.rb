@@ -30,6 +30,9 @@ module Occi
     # :method: computes_get
 
     ##
+    # :method: computes_post
+
+    ##
     # :method: networks_get
 
     ##
@@ -37,5 +40,8 @@ module Occi
 
     ##
     # :method: storages_get
+
+    ##
+    # :method: storages_post
   end
 end

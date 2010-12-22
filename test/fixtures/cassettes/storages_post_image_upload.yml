@@ -1,0 +1,50 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: http://oneadmin:a9464e3228ae563be6207bbf50437a219550f48b@one.example.com:4567/storage
+    body: |
+      -------------RubyMultipartPost
+      Content-Disposition: form-data; name="file"; filename="null"
+      Content-Length: 0
+      Content-Type: application/octet-stream
+      Content-Transfer-Encoding: binary
+      
+      
+      -------------RubyMultipartPost
+      Content-Disposition: form-data; name="occixml"
+      
+      <?xml version="1.0"?>
+      <STORAGE>
+        <NAME>Minitest Image</NAME>
+        <DESCRIPTION>Minitest Image for testing.</DESCRIPTION>
+        <TYPE>OS</TYPE>
+        <URL>file:///dev/null</URL>
+      </STORAGE>
+      
+      -------------RubyMultipartPost--
+
+    headers: 
+      content-type: 
+      - multipart/form-data; boundary=-----------RubyMultipartPost
+      content-length: 
+      - "486"
+      connection: 
+      - keep-alive
+      keep-alive: 
+      - 30
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 201
+      message: Created
+    headers: 
+      content-type: 
+      - text/html;charset=utf-8
+      content-length: 
+      - "199"
+      connection: 
+      - keep-alive
+      server: 
+      - thin 1.2.7 codename No Hup
+    body: <STORAGE href="http://cm-01.cloud.int.ev1.atti.com:4567/storage/16"><ID>16</ID><NAME>Minitest Image</NAME><TYPE>OS</TYPE><DESCRIPTION>Minitest Image for testing.</DESCRIPTION><SIZE>0</SIZE></STORAGE>
+    http_version: "1.1"
