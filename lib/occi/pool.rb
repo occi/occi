@@ -1,5 +1,17 @@
 module Occi
   module Pool
+    Gets = %w(
+      computes_get
+      networks_get
+      storages_get
+    ).freeze
+
+    Posts = %w(
+      computes_post
+      networks_post
+      storages_post
+    ).freeze
+
     ##
     # The _get methods:
     #   Returns the contents of the pool.
@@ -10,14 +22,7 @@ module Occi
     #   VM without the ID element should be passed in the http body.
     #   201 Created: An XML representation of a ER of type COMPUTE with the ID.
 
-    %w(
-      computes_get
-      computes_post
-      networks_get
-      networks_post
-      storages_get
-      storages_post
-    ).each do |method|
+    (Gets + Posts).each do |method|
       define_method method do |*args|
         params     = args[0] || {}
         path, verb = method.split("_")

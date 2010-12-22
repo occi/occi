@@ -1,7 +1,7 @@
 require "support"
 
 describe Occi::Pool do
-  %w(computes_get storages_get networks_get).each do |method|
+  Occi::Pool::Gets.each do |method|
     describe "#{method}" do
       it "returns a parsed XML document" do
         VCR.use_cassette method do
