@@ -6,7 +6,7 @@
     body: |
       <?xml version="1.0"?>
       <NETWORK>
-        <NAME>My Service Network</NAME>
+        <NAME>Test Framework</NAME>
         <ADDRESS>192.168.1.1</ADDRESS>
         <SIZE>200</SIZE>
       </NETWORK>
@@ -28,10 +28,10 @@
       content-type: 
       - text/html;charset=utf-8
       content-length: 
-      - "166"
+      - "162"
       connection: 
       - keep-alive
       server: 
       - thin 1.2.7 codename No Hup
-    body: <NETWORK href="http://cm-01.cloud.int.ev1.atti.com:4567/network/10"><ID>10</ID><NAME>My Service Network</NAME><ADDRESS>192.168.1.1</ADDRESS><SIZE>200</SIZE></NETWORK>
+    body: <NETWORK href="http://cm-01.cloud.int.ev1.atti.com:4567/network/16"><ID>16</ID><NAME>Test Framework</NAME><ADDRESS>192.168.1.1</ADDRESS><SIZE>200</SIZE></NETWORK>
     http_version: "1.1"

@@ -17,7 +17,7 @@ describe Occi::Pool do
     before do
       @builder = Nokogiri::XML::Builder.new do
         NETWORK {
-          NAME "Minitest Network"
+          NAME "Test Framework"
           ADDRESS "192.168.1.1"
           SIZE "200"
         }
@@ -39,8 +39,8 @@ describe Occi::Pool do
       before do
         @builder = Nokogiri::XML::Builder.new do
           STORAGE {
-            NAME "Minitest Image"
-            DESCRIPTION "Minitest Image for testing."
+            NAME "Test Framework"
+            DESCRIPTION "Test Framework Image."
             TYPE "OS"
             ### Not exactly sure what URL does.
             URL "file:///dev/null"
