@@ -68,6 +68,12 @@ describe Occi::Pool do
 
   describe "#computes_post" do
     before do
+      ##
+      # Adding NETWORK_NAME to the CONTEXT should be reworked.
+      # We want the vm to divine it's IP from its MAC Address on
+      # boot.  Then we no longer need the coupling in the XML.
+      # CLOUD-35 open to address this.
+
       @builder = Nokogiri::XML::Builder.new do
         COMPUTE {
           NAME "Test Framework"
