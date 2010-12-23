@@ -19,7 +19,6 @@
         <NAME>Test Framework</NAME>
         <DESCRIPTION>Test Framework Image.</DESCRIPTION>
         <TYPE>OS</TYPE>
-        <PUBLIC>YES</PUBLIC>
         <URL>file:///dev/null</URL>
       </STORAGE>
       
@@ -29,7 +28,7 @@
       content-type: 
       - multipart/form-data; boundary=-----------RubyMultipartPost
       content-length: 
-      - "503"
+      - "480"
       connection: 
       - keep-alive
       keep-alive: 
@@ -47,5 +46,5 @@
       - keep-alive
       server: 
       - thin 1.2.7 codename No Hup
-    body: <STORAGE href="http://cm-01.cloud.int.ev1.atti.com:4567/storage/18"><ID>18</ID><NAME>Test Framework</NAME><TYPE>OS</TYPE><DESCRIPTION>Test Framework Image.</DESCRIPTION><SIZE>0</SIZE></STORAGE>
+    body: <STORAGE href="http://cm-01.cloud.int.ev1.atti.com:4567/storage/20"><ID>20</ID><NAME>Test Framework</NAME><TYPE>OS</TYPE><DESCRIPTION>Test Framework Image.</DESCRIPTION><SIZE>0</SIZE></STORAGE>
     http_version: "1.1"

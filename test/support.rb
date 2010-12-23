@@ -1,6 +1,6 @@
 Bundler.setup :default, :test
 
-%w(minitest/spec digest/sha1 nokogiri occi).each { |r| require r }
+%w(minitest/spec digest/sha1 nokogiri vcr webmock occi).each { |r| require r }
 
 class MiniTest::Unit::TestCase
   Connection = Occi::Client.new(
@@ -9,16 +9,34 @@ class MiniTest::Unit::TestCase
     :password => Digest::SHA1.hexdigest(ENV['ONE_PASSWORD']),
   )
 
-  require "nokogiri"
-  def cassette_for cassette
-    c = VCR::Cassette.new(cassette).send :recorded_interactions
+  def okay response, code
+    response.body.must_be_kind_of Nokogiri::XML::Document
+    response.code.must_equal code
+  end
 
-    Nokogiri::XML.parse c.first.response.body
+  def is_okay response
+    okay response, "200"
+  end
+
+  def is_accepted response
+    okay response, "202"
+  end
+
+  def is_no_content response
+    okay response, "204"
+  end
+
+  def is_created response
+    okay response, "201"
   end
 end
 
-require "vcr"
-require "webmock"
+def cassette_for cassette
+  c = VCR::Cassette.new(cassette).send :recorded_interactions
+
+  Nokogiri::XML::Document.parse c.first.response.body
+end
+
 WebMock.disable_net_connect! :allow => "one.example.com"
 VCR.config do |c|
   c.stub_with :webmock

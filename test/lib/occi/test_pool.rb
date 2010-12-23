@@ -7,8 +7,7 @@ describe Occi::Pool do
         VCR.use_cassette method do
           response = Connection.send method
 
-          response.body.must_be_kind_of Nokogiri::XML::Document
-          response.code.must_equal "200"
+          is_okay response
         end
       end
     end
@@ -29,8 +28,7 @@ describe Occi::Pool do
       VCR.use_cassette "networks_post" do
         response = Connection.networks_post :body => @builder
 
-        response.body.must_be_kind_of Nokogiri::XML::Document
-        response.code.must_equal "201"
+        is_created response
       end
     end
   end
@@ -60,8 +58,7 @@ describe Occi::Pool do
       VCR.use_cassette "storages_post" do
         response = Connection.storages_post :upload => @upload
 
-        response.body.must_be_kind_of Nokogiri::XML::Document
-        response.code.must_equal "201"
+        is_created response
       end
     end
   end
@@ -95,8 +92,7 @@ describe Occi::Pool do
       VCR.use_cassette "computes_post" do
         response = Connection.computes_post :body => @builder
 
-        response.body.must_be_kind_of Nokogiri::XML::Document
-        response.code.must_equal "201"
+        is_created response
       end
     end
   end

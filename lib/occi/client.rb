@@ -5,7 +5,7 @@ module Occi
     ##
     # Include endpoints.
 
-    %w(pool).each do |mixin|
+    %w(pool entity).each do |mixin|
       require "occi/#{mixin}"
       include eval "Occi::#{mixin.capitalize}"
     end
