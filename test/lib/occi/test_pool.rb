@@ -8,6 +8,7 @@ describe Occi::Pool do
           response = Connection.send method
 
           response.body.must_be_kind_of Nokogiri::XML::Document
+          response.code.must_equal "200"
         end
       end
     end
@@ -35,34 +36,61 @@ describe Occi::Pool do
   end
 
   describe "#storages_post" do
-    describe "image upload" do
-      before do
-        @builder = Nokogiri::XML::Builder.new do
-          STORAGE {
-            NAME "Test Framework"
-            DESCRIPTION "Test Framework Image."
-            TYPE "OS"
-            ### Not exactly sure what URL does.
-            URL "file:///dev/null"
-          }
-        end.to_xml
-
-        @upload = {
-          :parts => {
-            :file    => "/dev/null",
-            :occixml => @builder,
-          },
-          :content_type => "application/octet-stream"
+    before do
+      @builder = Nokogiri::XML::Builder.new do
+        STORAGE {
+          NAME "Test Framework"
+          DESCRIPTION "Test Framework Image."
+          TYPE "OS"
+          ### Not exactly sure what URL does.
+          URL "file:///dev/null"
         }
+      end.to_xml
+
+      @upload = {
+        :parts => {
+          :file    => "/dev/null",
+          :occixml => @builder,
+        },
+        :content_type => "application/octet-stream"
+      }
+    end
+
+    it "returns a parsed XML document" do
+      VCR.use_cassette "storages_post" do
+        response = Connection.storages_post :upload => @upload
+
+        response.body.must_be_kind_of Nokogiri::XML::Document
+        response.code.must_equal "201"
       end
+    end
+  end
 
-      it "returns a parsed XML document" do
-        VCR.use_cassette "storages_post" do
-          response = Connection.storages_post :upload => @upload
+  describe "#computes_post" do
+    before do
+      @builder = Nokogiri::XML::Builder.new do
+        COMPUTE {
+          NAME "Test Framework"
+          INSTANCE_TYPE "small"
+          DISK {
+            STORAGE(:href => "http://www.opennebula.org/storage/11")
+          }
+          NIC {
+            NETWORK(:href => "http://www.opennebula.org/network/14")
+          }
+          CONTEXT {
+            NETWORK_NAME "10.3.172.0"
+          }
+        }
+      end.to_xml
+    end
 
-          response.body.must_be_kind_of Nokogiri::XML::Document
-          response.code.must_equal "201"
-        end
+    it "returns a parsed XML document" do
+      VCR.use_cassette "computes_post" do
+        response = Connection.computes_post :body => @builder
+
+        response.body.must_be_kind_of Nokogiri::XML::Document
+        response.code.must_equal "201"
       end
     end
   end

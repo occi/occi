@@ -8,6 +8,13 @@ class MiniTest::Unit::TestCase
     :user     => ENV['ONE_USER'],
     :password => Digest::SHA1.hexdigest(ENV['ONE_PASSWORD']),
   )
+
+  require "nokogiri"
+  def cassette_for cassette
+    c = VCR::Cassette.new(cassette).send :recorded_interactions
+
+    Nokogiri::XML.parse c.first.response.body
+  end
 end
 
 require "vcr"
