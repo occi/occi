@@ -34,7 +34,7 @@ DEPENDENCIES
   hugs!
   jeweler (~> 1.5.1)
   minitest (~> 2.0.0)
-  multipart-post
+  multipart-post (~> 1.0.1)
   nokogiri (~> 1.4.4)
   rake
   vcr (~> 1.4.0)

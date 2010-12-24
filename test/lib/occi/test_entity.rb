@@ -1,20 +1,18 @@
 require "support"
 
-def magic
-  @magic ||= [
+describe Occi::Entity do
+  Magic = [
     cassette_for("computes_post"),
     cassette_for("networks_post"),
     cassette_for("storages_post")
   ].map { |ele| ele.xpath('//ID').text }
-end
 
-describe Occi::Entity do
   Occi::Entity::Gets.each_with_index do |method, i|
-    describe "#{method}/#{magic[i]}" do
+    describe "#{method}/#{Magic[i]}" do
 
       it "returns a parsed XML document" do
         VCR.use_cassette method do
-          response = Connection.send method, magic[i]
+          response = Connection.send method, Magic[i]
 
           is_okay response
         end
@@ -22,8 +20,9 @@ describe Occi::Entity do
     end
   end
 
-  describe "#compute_put/#{magic[0]}" do
+  describe "#compute_put" do
     before do
+      @magicvm = "134"
       @builder = Nokogiri::XML::Builder.new do
         COMPUTE {
           STATE "shutdown"
@@ -33,23 +32,23 @@ describe Occi::Entity do
 
     it "returns a parsed XML document" do
       VCR.use_cassette "compute_put" do
-        response = Connection.compute_put magic[1], :body => @builder
+        response = Connection.compute_put @magicvm, :body => @builder
 
         is_accepted response
       end
     end
   end
 
-  #Occi::Entity::Deletes.each_with_index do |method, i|
-  #  describe "#{method}/#{Magic[i]}" do
+  Occi::Entity::Deletes.each_with_index do |method, i|
+    describe "#{method}/#{Magic[i]}" do
 
-  #    it "returns a parsed XML document" do
-  #      VCR.use_cassette method do
-  #        response = Connection.send method, Magic[i]
+      it "returns a parsed XML document" do
+        VCR.use_cassette method do
+          response = Connection.send method, Magic[i]
 
-  #        is_no_content response
-  #      end
-  #    end
-  #  end
-  #end
+          is_no_content response
+        end
+      end
+    end
+  end
 end

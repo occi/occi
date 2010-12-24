@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://oneadmin:a9464e3228ae563be6207bbf50437a219550f48b@one.example.com:4567/compute/18
+    uri: http://oneadmin:a9464e3228ae563be6207bbf50437a219550f48b@one.example.com:4567/compute/134
     body: |
       <?xml version="1.0"?>
       <COMPUTE>
@@ -20,16 +20,16 @@
       - 30
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
-      code: 400
-      message: Bad Request
+      code: 202
+      message: Accepted
     headers: 
       content-type: 
       - text/html;charset=utf-8
       content-length: 
-      - "29"
+      - "809"
       connection: 
       - keep-alive
       server: 
       - thin 1.2.7 codename No Hup
-    body: Wrong state to perform action
+    body: <COMPUTE href="http://cm-01.cloud.int.ev1.atti.com:4567/compute/134"><ID>134</ID><NAME>Centos-5-4_x86_64-Kevin</NAME><STATE>ACTIVE</STATE><DISK><STORAGE href="http://cm-01.cloud.int.ev1.atti.com:4567/storage/22" name="Centos 5.4 x86_64 Kevin"/><TYPE>DISK</TYPE><TARGET>hda</TARGET></DISK><DISK><STORAGE href="http://cm-01.cloud.int.ev1.atti.com:4567/storage/" name=""/><TYPE>swap</TYPE><TARGET>hdd</TARGET></DISK><NIC><NETWORK href="http://cm-01.cloud.int.ev1.atti.com:4567/network/15" name="10.3.174.0"/><IP>10.3.174.10</IP><MAC>02:00:0a:03:ae:0a</MAC></NIC><CONTEXT><FILES>/opt/tpkg/var/opennebula-2.0/templates/context/init.sh</FILES><GATEWAY>10.3.174.1</GATEWAY><HOSTNAME>02:00:0a:03:ae:0a</HOSTNAME><IP_PUBLIC>10.3.174.10</IP_PUBLIC><NETMASK>/23</NETMASK><NS></NS><TARGET>hdc</TARGET></CONTEXT></COMPUTE>
     http_version: "1.1"
