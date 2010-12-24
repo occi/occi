@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
-#gem "hugs", "~> 2.1.0"
-gem "hugs", :path => "~/git/hugs"
+gem "hugs", "~> 2.1.0"
+#gem "hugs", :path => "~/git/hugs"
 gem "multipart-post", "~> 1.0.1"
 gem "nokogiri", "~> 1.4.4"
 
