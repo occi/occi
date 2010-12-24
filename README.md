@@ -18,6 +18,8 @@ MiniTest will run the tests in a random order.  When rebuilding the fixtures, th
 tests depend on the pool tests having already been run.  Since the fixtures change infrequently,
 this should be acceptable.
 
+Tests can run offline thanks to [VCR](https://github.com/myronmarston/vcr).
+
     $ export ONE_USER=$user
     $ export ONE_PASSWORD=$password
 
