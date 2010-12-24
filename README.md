@@ -22,3 +22,7 @@ this should be acceptable.
     $ export ONE_PASSWORD=$password
 
     $ bundle exec rake
+
+## TODO
+
+* Should we raise when we do not have expected HTTP code or body?
