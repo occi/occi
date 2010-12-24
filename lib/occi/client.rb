@@ -1,4 +1,5 @@
 require "hugs"
+require "digest/sha1"
 
 module Occi
   class Client
@@ -19,7 +20,7 @@ module Occi
     def initialize options
       @connection = Hugs.new(
         :user     => options[:user],
-        :password => options[:password],
+        :password => Digest::SHA1.hexdigest(options[:password]),
         :host     => options[:host],
         :scheme   => options[:scheme] || "http",
         :port     => options[:port] || 4567,
