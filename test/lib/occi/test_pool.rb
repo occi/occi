@@ -13,6 +13,40 @@ describe Occi::Pool do
     end
   end
 
+  describe "#computes_post" do
+    before do
+      ##
+      # Adding NETWORK_NAME to the CONTEXT should be reworked.
+      # We want the vm to divine it's IP from its MAC Address on
+      # boot.  Then we no longer need the coupling in the XML.
+      # CLOUD-35 open to address this.
+
+      @builder = Nokogiri::XML::Builder.new do
+        COMPUTE {
+          NAME "Test Framework"
+          INSTANCE_TYPE "small"
+          DISK {
+            STORAGE(:href => "http://www.opennebula.org/storage/11")
+          }
+          NIC {
+            NETWORK(:href => "http://www.opennebula.org/network/14")
+          }
+          CONTEXT {
+            NETWORK_NAME "10.3.172.0"
+          }
+        }
+      end.to_xml
+    end
+
+    it "returns a parsed XML document" do
+      VCR.use_cassette "computes_post" do
+        response = Connection.computes_post :body => @builder
+
+        is_created response
+      end
+    end
+  end
+
   describe "#networks_post" do
     before do
       @builder = Nokogiri::XML::Builder.new do
@@ -57,40 +91,6 @@ describe Occi::Pool do
     it "returns a parsed XML document" do
       VCR.use_cassette "storages_post" do
         response = Connection.storages_post :upload => @upload
-
-        is_created response
-      end
-    end
-  end
-
-  describe "#computes_post" do
-    before do
-      ##
-      # Adding NETWORK_NAME to the CONTEXT should be reworked.
-      # We want the vm to divine it's IP from its MAC Address on
-      # boot.  Then we no longer need the coupling in the XML.
-      # CLOUD-35 open to address this.
-
-      @builder = Nokogiri::XML::Builder.new do
-        COMPUTE {
-          NAME "Test Framework"
-          INSTANCE_TYPE "small"
-          DISK {
-            STORAGE(:href => "http://www.opennebula.org/storage/11")
-          }
-          NIC {
-            NETWORK(:href => "http://www.opennebula.org/network/14")
-          }
-          CONTEXT {
-            NETWORK_NAME "10.3.172.0"
-          }
-        }
-      end.to_xml
-    end
-
-    it "returns a parsed XML document" do
-      VCR.use_cassette "computes_post" do
-        response = Connection.computes_post :body => @builder
 
         is_created response
       end

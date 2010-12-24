@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :delete
-    uri: http://oneadmin:a9464e3228ae563be6207bbf50437a219550f48b@one.example.com:4567/network/17
+    uri: http://oneadmin:a9464e3228ae563be6207bbf50437a219550f48b@one.example.com:4567/network/19
     body: 
     headers: 
       accept: 
@@ -19,52 +19,4 @@
       server: 
       - thin 1.2.7 codename No Hup
     body: 
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :delete
-    uri: http://oneadmin:a9464e3228ae563be6207bbf50437a219550f48b@one.example.com:4567/network/18
-    body: 
-    headers: 
-      accept: 
-      - application/xml
-      connection: 
-      - keep-alive
-      keep-alive: 
-      - 30
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
-      code: 204
-      message: No Content
-    headers: 
-      server: 
-      - thin 1.2.7 codename No Hup
-    body: 
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :delete
-    uri: http://oneadmin:a9464e3228ae563be6207bbf50437a219550f48b@one.example.com:4567/network/3
-    body: 
-    headers: 
-      accept: 
-      - application/xml
-      connection: 
-      - keep-alive
-      keep-alive: 
-      - 30
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
-      code: 500
-      message: Internal Server Error
-    headers: 
-      content-type: 
-      - text/html;charset=utf-8
-      content-length: 
-      - "45"
-      connection: 
-      - keep-alive
-      server: 
-      - thin 1.2.7 codename No Hup
-    body: "[VirtualNetworkDelete] Error getting NET [3]."
     http_version: "1.1"
