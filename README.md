@@ -10,7 +10,7 @@
 
 ### Examples
 
-See the examples section in the [wiki](http://github.com/retr0h/occi/wiki/Examples).
+See the examples section in the [wiki](http://github.com/retr0h/occi/wiki).
 
 ## Testing
 
