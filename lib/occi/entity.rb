@@ -6,15 +6,15 @@ module Occi
       storage
     ).map { |v| "#{v}_get" }.freeze
 
-    Puts = %w(
-      compute
-    ).map { |v| "#{v}_put" }.freeze
-
     Deletes = %w(
       compute
       network
       storage
     ).map { |v| "#{v}_delete" }.freeze
+
+    Puts = %w(
+      compute
+    ).map { |v| "#{v}_put" }.freeze
 
     ##
     # The _get methods:
@@ -29,7 +29,7 @@ module Occi
     #   Update request for a Compute identified by +compute_id+.
     #   202 Accepted : The update request is being process, polling required to confirm update.
 
-    (Gets + Puts + Deletes).each do |method|
+    (Gets + Deletes + Puts).each do |method|
       define_method method do |*args|
         id         = args[0]
         params     = args[1] || {}

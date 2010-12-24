@@ -53,3 +53,30 @@
       - thin 1.2.7 codename No Hup
     body: <COMPUTE href="http://cm-01.cloud.int.ev1.atti.com:4567/compute/131"><ID>131</ID><NAME>Test Framework</NAME><INSTANCE_TYPE>small</INSTANCE_TYPE><STATE>PENDING</STATE><DISK><STORAGE href="http://cm-01.cloud.int.ev1.atti.com:4567/storage/11" name="Centos 5.4 x86_64"/><TYPE>DISK</TYPE><TARGET>hda</TARGET></DISK><NIC><NETWORK href="http://cm-01.cloud.int.ev1.atti.com:4567/network/14" name="10.3.172.0"/><IP>10.3.172.24</IP><MAC>02:00:0a:03:ac:18</MAC></NIC><CONTEXT><FILES>/opt/tpkg/opennebula-2.0/../var/opennebula-2.0/templates/context/init.sh</FILES><GATEWAY>10.3.172.1</GATEWAY><HOSTNAME>02:00:0a:03:ac:18</HOSTNAME><IP_PUBLIC>10.3.172.24</IP_PUBLIC><NETMASK>/23</NETMASK><TARGET>hdc</TARGET></CONTEXT></COMPUTE>
     http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://oneadmin:a9464e3228ae563be6207bbf50437a219550f48b@one.example.com:4567/compute/1
+    body: 
+    headers: 
+      accept: 
+      - application/xml
+      connection: 
+      - keep-alive
+      keep-alive: 
+      - 30
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      content-type: 
+      - text/html;charset=utf-8
+      content-length: 
+      - "136"
+      connection: 
+      - keep-alive
+      server: 
+      - thin 1.2.7 codename No Hup
+    body: <COMPUTE href="http://cm-01.cloud.int.ev1.atti.com:4567/compute/1"><ID>1</ID><NAME>Centos 5.4 x86_64</NAME><STATE>DONE</STATE></COMPUTE>
+    http_version: "1.1"
