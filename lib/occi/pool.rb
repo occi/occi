@@ -1,3 +1,5 @@
+require "occi/status"
+
 module Occi
   module Pool
     Gets = {
@@ -31,14 +33,16 @@ module Occi
     #   201 Created: An XML representation of a ER of type COMPUTE with the ID.
 
     Verbs.each do |pairs|
-      status = pairs[:status]
+      expected_status = pairs[:status]
 
       pairs[:methods].each do |method|
         define_method method do |*args|
           params     = args[0] || {}
           path, verb = method.split("_")
 
-          request.send verb, "/#{path.sub(%r{s$}, '')}", params
+          req = request.send verb, "/#{path.sub(%r{s$}, '')}", params
+          Status.validate expected_status, req.code
+          req
         end
       end
     end

@@ -1,3 +1,5 @@
+require "occi/status"
+
 module Occi
   module Entity
     Gets = {
@@ -41,7 +43,7 @@ module Occi
     #   202 Accepted : The update request is being process, polling required to confirm update.
 
     Verbs.each do |pairs|
-      status = pairs[:status]
+      expected_status = pairs[:status]
 
       pairs[:methods].each do |method|
         define_method method do |*args|
@@ -49,7 +51,9 @@ module Occi
           params     = args[1] || {}
           path, verb = method.split("_")
 
-          request.send verb, "/#{path}/#{id}", params
+          req = request.send verb, "/#{path}/#{id}", params
+          Status.validate expected_status, req.code
+          req
         end
       end
     end

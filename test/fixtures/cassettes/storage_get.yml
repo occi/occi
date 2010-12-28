@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :get
-    uri: http://oneadmin:a9464e3228ae563be6207bbf50437a219550f48b@one.example.com:4567/storage/19
+    uri: http://oneadmin:a9464e3228ae563be6207bbf50437a219550f48b@one.example.com:4567/storage/25
     body: 
     headers: 
       accept: 
@@ -24,12 +24,12 @@
       - keep-alive
       server: 
       - thin 1.2.7 codename No Hup
-    body: <STORAGE href="http://cm-01.cloud.int.ev1.atti.com:4567/storage/19"><ID>19</ID><NAME>Test Framework</NAME><TYPE>OS</TYPE><DESCRIPTION>Test Framework Image.</DESCRIPTION><SIZE>0</SIZE></STORAGE>
+    body: <STORAGE href="http://cm-01.cloud.int.ev1.atti.com:4567/storage/25"><ID>25</ID><NAME>Test Framework</NAME><TYPE>OS</TYPE><DESCRIPTION>Test Framework Image.</DESCRIPTION><SIZE>0</SIZE></STORAGE>
     http_version: "1.1"
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :get
-    uri: http://oneadmin:a9464e3228ae563be6207bbf50437a219550f48b@one.example.com:4567/storage/20
+    uri: http://oneadmin:a9464e3228ae563be6207bbf50437a219550f48b@one.example.com:4567/storage/28
     body: 
     headers: 
       accept: 
@@ -51,39 +51,12 @@
       - keep-alive
       server: 
       - thin 1.2.7 codename No Hup
-    body: <STORAGE href="http://cm-01.cloud.int.ev1.atti.com:4567/storage/20"><ID>20</ID><NAME>Test Framework</NAME><TYPE>OS</TYPE><DESCRIPTION>Test Framework Image.</DESCRIPTION><SIZE>0</SIZE></STORAGE>
+    body: <STORAGE href="http://cm-01.cloud.int.ev1.atti.com:4567/storage/28"><ID>28</ID><NAME>Test Framework</NAME><TYPE>OS</TYPE><DESCRIPTION>Test Framework Image.</DESCRIPTION><SIZE>0</SIZE></STORAGE>
     http_version: "1.1"
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :get
-    uri: http://oneadmin:a9464e3228ae563be6207bbf50437a219550f48b@one.example.com:4567/storage/4
-    body: 
-    headers: 
-      accept: 
-      - application/xml
-      connection: 
-      - keep-alive
-      keep-alive: 
-      - 30
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
-      code: 404
-      message: Not Found
-    headers: 
-      content-type: 
-      - text/html;charset=utf-8
-      content-length: 
-      - "36"
-      connection: 
-      - keep-alive
-      server: 
-      - thin 1.2.7 codename No Hup
-    body: "[ImageInfo] Error getting IMAGE [4]."
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :get
-    uri: http://oneadmin:a9464e3228ae563be6207bbf50437a219550f48b@one.example.com:4567/storage/23
+    uri: http://oneadmin:a9464e3228ae563be6207bbf50437a219550f48b@one.example.com:4567/storage/29
     body: 
     headers: 
       accept: 
@@ -105,5 +78,5 @@
       - keep-alive
       server: 
       - thin 1.2.7 codename No Hup
-    body: <STORAGE href="http://cm-01.cloud.int.ev1.atti.com:4567/storage/23"><ID>23</ID><NAME>Test Framework</NAME><TYPE>OS</TYPE><DESCRIPTION>Test Framework Image.</DESCRIPTION><SIZE>0</SIZE></STORAGE>
+    body: <STORAGE href="http://cm-01.cloud.int.ev1.atti.com:4567/storage/29"><ID>29</ID><NAME>Test Framework</NAME><TYPE>OS</TYPE><DESCRIPTION>Test Framework Image.</DESCRIPTION><SIZE>0</SIZE></STORAGE>
     http_version: "1.1"

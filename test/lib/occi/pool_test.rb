@@ -1,4 +1,4 @@
-require "support"
+require "test_helper"
 
 describe Occi::Pool do
   Occi::Pool::Gets[:methods].each do |method|

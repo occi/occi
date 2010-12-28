@@ -19,10 +19,10 @@
       content-type: 
       - text/html;charset=utf-8
       content-length: 
-      - "425"
+      - "616"
       connection: 
       - keep-alive
       server: 
       - thin 1.2.7 codename No Hup
-    body: "<STORAGE_COLLECTION><STORAGE href=\"http://cm-01.cloud.int.ev1.atti.com:4567/storage/1\" name=\"Ubuntu 10.10 x86_64\"/><STORAGE href=\"http://cm-01.cloud.int.ev1.atti.com:4567/storage/2\" name=\"Ubuntu 10.04.1 x86_64\"/><STORAGE href=\"http://cm-01.cloud.int.ev1.atti.com:4567/storage/7\" name=\"Centos 5.4 i686\"/><STORAGE href=\"http://cm-01.cloud.int.ev1.atti.com:4567/storage/11\" name=\"Centos 5.4 x86_64\"/></STORAGE_COLLECTION>       "
+    body: "<STORAGE_COLLECTION><STORAGE href=\"http://cm-01.cloud.int.ev1.atti.com:4567/storage/1\" name=\"Ubuntu 10.10 x86_64\"/><STORAGE href=\"http://cm-01.cloud.int.ev1.atti.com:4567/storage/2\" name=\"Ubuntu 10.04.1 x86_64\"/><STORAGE href=\"http://cm-01.cloud.int.ev1.atti.com:4567/storage/7\" name=\"Centos 5.4 i686\"/><STORAGE href=\"http://cm-01.cloud.int.ev1.atti.com:4567/storage/11\" name=\"Centos 5.4 x86_64\"/><STORAGE href=\"http://cm-01.cloud.int.ev1.atti.com:4567/storage/22\" name=\"Centos 5.4 x86_64 Kevin\"/><STORAGE href=\"http://cm-01.cloud.int.ev1.atti.com:4567/storage/26\" name=\"Test Framework\"/></STORAGE_COLLECTION>       "
     http_version: "1.1"
