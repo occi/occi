@@ -1,4 +1,4 @@
-require "support"
+require "test_helper"
 
 describe Occi::Entity do
   Magic_Ids = [
