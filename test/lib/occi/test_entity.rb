@@ -1,4 +1,4 @@
-require "test_helper"
+require "support"
 
 describe Occi::Entity do
   Magic_Ids = [
@@ -38,7 +38,7 @@ describe Occi::Entity do
     before do
       @builder = Nokogiri::XML::Builder.new do
         COMPUTE {
-         STATE "shutdown"
+          STATE "shutdown"
         }
       end.to_xml
     end

@@ -46,5 +46,5 @@
       - keep-alive
       server: 
       - thin 1.2.7 codename No Hup
-    body: <STORAGE href="http://cm-01.cloud.int.ev1.atti.com:4567/storage/29"><ID>29</ID><NAME>Test Framework</NAME><TYPE>OS</TYPE><DESCRIPTION>Test Framework Image.</DESCRIPTION><SIZE>0</SIZE></STORAGE>
+    body: <STORAGE href="http://cm-01.cloud.int.ev1.atti.com:4567/storage/23"><ID>23</ID><NAME>Test Framework</NAME><TYPE>OS</TYPE><DESCRIPTION>Test Framework Image.</DESCRIPTION><SIZE>0</SIZE></STORAGE>
     http_version: "1.1"
