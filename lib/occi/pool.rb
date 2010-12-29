@@ -1,4 +1,4 @@
-require "occi/status"
+require "occi/errors"
 
 module Occi
   module Pool
@@ -41,7 +41,7 @@ module Occi
           path, verb = method.split("_")
 
           req = request.send verb, "/#{path.sub(%r{s$}, '')}", params
-          Status.validate expected_status, req.code
+          Errors.occurred expected_status, req.code
           req
         end
       end
