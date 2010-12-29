@@ -1,24 +1,16 @@
 module Occi
   module Pool
-    Gets = {
-      :methods => %w(
-        computes
-        networks
-        storages
-      ).map { |v| "#{v}_get" },
-      :status => 200,
-    }.freeze
+    Gets = %w(
+      computes
+      networks
+      storages
+    ).map { |v| "#{v}_get" }.freeze
 
-    Posts = {
-      :methods => %w(
-        computes
-        networks
-        storages
-      ).map { |v| "#{v}_post" },
-      :status => 201,
-    }.freeze
-
-    Verbs = Array.new << Gets << Posts
+    Posts = %w(
+      computes
+      networks
+      storages
+    ).map { |v| "#{v}_post" }.freeze
 
     ##
     # The _get methods:
@@ -30,16 +22,12 @@ module Occi
     #   VM without the ID element should be passed in the http body.
     #   201 Created: An XML representation of a ER of type COMPUTE with the ID.
 
-    Verbs.each do |pairs|
-      status = pairs[:status]
+    (Gets + Posts).each do |method|
+      define_method method do |*args|
+        params     = args[0] || {}
+        path, verb = method.split("_")
 
-      pairs[:methods].each do |method|
-        define_method method do |*args|
-          params     = args[0] || {}
-          path, verb = method.split("_")
-
-          request.send verb, "/#{path.sub(%r{s$}, '')}", params
-        end
+        request.send verb, "/#{path.sub(%r{s$}, '')}", params
       end
     end
 

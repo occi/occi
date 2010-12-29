@@ -7,7 +7,7 @@ describe Occi::Entity do
     cassette_for("storages_post")
   ].map { |ele| ele.xpath('//ID').text }
 
-  Occi::Entity::Gets[:methods].each_with_index do |method, i|
+  Occi::Entity::Gets.each_with_index do |method, i|
     describe "#{method}/#{Magic_Ids[i]}" do
 
       it "returns a parsed XML document" do
@@ -20,7 +20,7 @@ describe Occi::Entity do
     end
   end
 
-  Occi::Entity::Deletes[:methods].each_with_index do |method, i|
+  Occi::Entity::Deletes.each_with_index do |method, i|
     describe "#{method}/#{Magic_Ids[i]}" do
 
       it "returns a parsed XML document" do

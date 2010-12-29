@@ -1,31 +1,20 @@
 module Occi
   module Entity
-    Gets = {
-      :methods => %w(
-        compute
-        network
-        storage
-      ).map { |v| "#{v}_get" },
-      :status => 200,
-    }.freeze
+    Gets = %w(
+      compute
+      network
+      storage
+    ).map { |v| "#{v}_get" }.freeze
 
-    Deletes = {
-      :methods => %w(
-        compute
-        network
-        storage
-      ).map { |v| "#{v}_delete" },
-      :status => 204,
-    }.freeze
+    Deletes = %w(
+      compute
+      network
+      storage
+    ).map { |v| "#{v}_delete" }.freeze
 
-    Puts = {
-      :methods => %w(
-        compute
-      ).map { |v| "#{v}_put" },
-      :status => 202,
-    }.freeze
-
-    Verbs = Array.new << Gets << Deletes << Puts
+    Puts = %w(
+      compute
+    ).map { |v| "#{v}_put" }.freeze
 
     ##
     # The _get methods:
@@ -40,17 +29,13 @@ module Occi
     #   Update request for a Compute identified by +compute_id+.
     #   202 Accepted : The update request is being process, polling required to confirm update.
 
-    Verbs.each do |pairs|
-      status = pairs[:status]
+    (Gets + Deletes + Puts).each do |method|
+      define_method method do |*args|
+        id         = args[0]
+        params     = args[1] || {}
+        path, verb = method.split("_")
 
-      pairs[:methods].each do |method|
-        define_method method do |*args|
-          id         = args[0]
-          params     = args[1] || {}
-          path, verb = method.split("_")
-
-          request.send verb, "/#{path}/#{id}", params
-        end
+        request.send verb, "/#{path}/#{id}", params
       end
     end
 
