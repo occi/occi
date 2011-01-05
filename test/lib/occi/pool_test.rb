@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe Occi::Pool do
-  Occi::Pool::Gets.each do |method|
+  %w{ computes_get networks_get storages_get }.each do |method|
     describe "#{method}" do
       it "returns a parsed XML document" do
         VCR.use_cassette method do

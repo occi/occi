@@ -2,14 +2,11 @@ require "hugs"
 require "digest/sha1"
 
 module Occi
+  Paths = %w{ compute network storage }
   class Client
-    ##
-    # Include endpoints.
-
-    %w(pool entity).each do |mixin|
-      require "occi/#{mixin}"
-      include eval "Occi::#{mixin.capitalize}"
-    end
+    require "occi/pool"
+    require "occi/entity"
+    include Occi::Pool, Occi::Entity
 
     ##
     # Required:

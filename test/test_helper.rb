@@ -1,12 +1,13 @@
+require 'bundler'
 Bundler.setup :default, :test
 
-%w(minitest/spec nokogiri vcr webmock occi).each { |r| require r }
+%w(minitest/autorun minitest/spec nokogiri vcr webmock occi).each { |r| require r }
 
 class MiniTest::Unit::TestCase
   Connection = Occi::Client.new(
     :host     => "one.example.com",
-    :user     => ENV['ONE_USER'],
-    :password => ENV['ONE_PASSWORD'],
+    :user     => ENV['ONE_USER']     || 'oneadmin',
+    :password => ENV['ONE_PASSWORD'] || 'cl0udt3am',
   )
 
   def okay response, code

@@ -1,0 +1,21 @@
+Autotest.add_hook(:initialize) do |at|
+  at.testlib = 'minitest/spec'
+  %w{.git .svn .hg .swp .DS_Store ._* tmp}.each do |exception|
+    at.add_exception(exception)
+  end
+
+  at.clear_mappings
+  tests = %r%^test/lib/.*_test\.rb$%
+
+  at.add_mapping(%r%^lib/(.*)\.rb$%) do |_, m|
+    ["test/lib/#{m[1]}_test.rb"]
+  end
+
+  at.add_mapping(tests) do |filename, _|
+    filename
+  end
+
+  at.add_mapping(%r%^test/.*\.rb$%) do
+    at.files_matching tests
+  end
+end
