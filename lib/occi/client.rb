@@ -26,6 +26,8 @@ module Occi
         :port     => options[:port] || 4567,
         :type     => options[:type] || :xml,
       )
+      @connection.raise_4xx
+      @connection.raise_5xx
     end
 
     def request
