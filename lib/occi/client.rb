@@ -18,7 +18,7 @@ module Occi
     # +host+: A String with the host to connect.
 
     def initialize options
-      @connection = Hugs.new(
+      @connection = Hugs::Client.new(
         :user     => options[:user],
         :password => Digest::SHA1.hexdigest(options[:password]),
         :host     => options[:host],
