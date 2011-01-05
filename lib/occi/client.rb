@@ -20,7 +20,7 @@ module Occi
     def initialize options
       @connection = Hugs::Client.new(
         :user     => options[:user],
-        :password => Digest::SHA1.hexdigest(options[:password]),
+        :password => Digest::SHA1.hexdigest options[:password],
         :host     => options[:host],
         :scheme   => options[:scheme] || "http",
         :port     => options[:port] || 4567,
