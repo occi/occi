@@ -20,5 +20,21 @@ module Occi
     def create builder
       @connection.post "/network", :body => builder
     end
+
+    ##
+    # Returns the representation of the Compute resource identified by +compute_id+.
+    # 200 OK: An XML representation of the pool in the http body.
+
+    def find id
+      @connection.get "/network/#{id}"
+    end
+
+    ##
+    # Deletes the Compute resource identified by +compute_id+.
+    # 204 No Content : The Compute has been successfully deleted.
+
+    def delete id
+      @connection.delete "/network/#{id}"
+    end
   end
 end

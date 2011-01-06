@@ -40,4 +40,28 @@ describe Occi::Storage do
       end
     end
   end
+
+  describe "#find" do
+    it "returns a parsed XML document" do
+      id = cassette_for("storages_post").xpath('//ID').text
+
+      VCR.use_cassette "storage_get" do
+        response = Connection.storage.find id
+
+        is_okay response
+      end
+    end
+  end
+
+  describe "#delete" do
+    it "returns a parsed XML document" do
+      id = cassette_for("storages_post").xpath('//ID').text
+
+      VCR.use_cassette "storage_delete" do
+        response = Connection.storage.delete id
+
+        is_no_content response
+      end
+    end
+  end
 end

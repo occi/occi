@@ -44,4 +44,47 @@ describe Occi::Compute do
       end
     end
   end
+
+  describe "#find" do
+    it "returns a parsed XML document" do
+      id = cassette_for("computes_post").xpath('//ID').text
+
+      VCR.use_cassette "compute_get" do
+        response = Connection.compute.find id
+
+        is_okay response
+      end
+    end
+  end
+
+  describe "#delete" do
+    it "returns a parsed XML document" do
+      id = cassette_for("computes_post").xpath('//ID').text
+
+      VCR.use_cassette "compute_delete" do
+        response = Connection.compute.delete id
+
+        is_no_content response
+      end
+    end
+  end
+
+  describe "#update" do
+    before do
+      @builder = Nokogiri::XML::Builder.new do
+        COMPUTE {
+          STATE "shutdown"
+        }
+      end.to_xml
+    end
+
+    it "returns a parsed XML document" do
+      id = "134"
+      VCR.use_cassette "compute_put" do
+        response = Connection.compute.update id, :body => @builder
+
+        is_accepted response
+      end
+    end
+  end
 end

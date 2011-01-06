@@ -30,4 +30,28 @@ describe Occi::Network do
       end
     end
   end
+
+  describe "#find" do
+    it "returns a parsed XML document" do
+      id = cassette_for("networks_post").xpath('//ID').text
+
+      VCR.use_cassette "network_get" do
+        response = Connection.network.find id
+
+        is_okay response
+      end
+    end
+  end
+
+  describe "#delete" do
+    it "returns a parsed XML document" do
+      id = cassette_for("networks_post").xpath('//ID').text
+
+      VCR.use_cassette "network_delete" do
+        response = Connection.network.delete id
+
+        is_no_content response
+      end
+    end
+  end
 end
