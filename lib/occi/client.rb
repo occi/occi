@@ -4,10 +4,11 @@ require "digest/sha1"
 module Occi
   Paths = %w{ compute network storage }
   class Client
-    require "occi/pool"
     require "occi/entity"
     require "occi/network"
-    include Occi::Pool, Occi::Entity
+    require "occi/storage"
+    require "occi/compute"
+    include Occi::Entity
 
     ##
     # Required:
@@ -33,7 +34,15 @@ module Occi
     end
 
     def network
-      Occi::Network.new @connection
+      @network ||= Occi::Network.new @connection
+    end
+
+    def storage
+      @storage ||= Occi::Storage.new @connection
+    end
+
+    def compute
+      @compute ||= Occi::Compute.new @connection
     end
   end
 end

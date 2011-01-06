@@ -1,5 +1,5 @@
 module Occi
-  class Network
+  class Compute
     def initialize connection
       @connection = connection
     end
@@ -9,7 +9,7 @@ module Occi
     # 200 OK: An XML representation of the pool in the http body.
 
     def all
-      @connection.get "/network"
+      @connection.get "/compute"
     end
 
     ##
@@ -18,7 +18,7 @@ module Occi
     # 201 Created: An XML representation of a ER of type COMPUTE with the ID.
 
     def create builder
-      @connection.post "/network", :body => builder
+      @connection.post "/compute", :body => builder
     end
   end
 end

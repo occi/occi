@@ -1,5 +1,5 @@
 module Occi
-  class Network
+  class Storage
     def initialize connection
       @connection = connection
     end
@@ -9,7 +9,7 @@ module Occi
     # 200 OK: An XML representation of the pool in the http body.
 
     def all
-      @connection.get "/network"
+      @connection.get "/storage"
     end
 
     ##
@@ -17,8 +17,8 @@ module Occi
     # VM without the ID element should be passed in the http body.
     # 201 Created: An XML representation of a ER of type COMPUTE with the ID.
 
-    def create builder
-      @connection.post "/network", :body => builder
+    def create upload
+      @connection.post "/storage", :upload => upload
     end
   end
 end
