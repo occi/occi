@@ -17,8 +17,8 @@ module Occi
         :port     => options[:port] || 4567,
         :type     => options[:type] || :xml,
       )
-      @connection.raise_4xx
-      @connection.raise_5xx
+      @connection.raise_4xx = true
+      @connection.raise_5xx = true
     end
 
     def network
