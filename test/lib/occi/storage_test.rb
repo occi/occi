@@ -53,12 +53,12 @@ describe Occi::Storage do
     end
   end
 
-  describe "#delete" do
+  describe "#destroy" do
     it "returns a parsed XML document" do
       id = cassette_for("storage_create").xpath('//ID').text
 
-      VCR.use_cassette "storage_delete" do
-        response = Connection.storage.delete id
+      VCR.use_cassette "storage_destroy" do
+        response = Connection.storage.destroy id
 
         is_no_content response
       end

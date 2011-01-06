@@ -52,7 +52,7 @@ module Occi
     # Deletes the Compute resource identified by +compute_id+.
     # 204 No Content : The Compute has been successfully deleted.
 
-    def delete id
+    def destroy id
       @connection.delete entity(id)
     end
   end

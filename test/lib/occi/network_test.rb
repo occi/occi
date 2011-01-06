@@ -43,12 +43,12 @@ describe Occi::Network do
     end
   end
 
-  describe "#delete" do
+  describe "#destroy" do
     it "returns a parsed XML document" do
       id = cassette_for("network_create").xpath('//ID').text
 
-      VCR.use_cassette "network_delete" do
-        response = Connection.network.delete id
+      VCR.use_cassette "network_destroy" do
+        response = Connection.network.destroy id
 
         is_no_content response
       end
