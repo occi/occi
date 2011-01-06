@@ -5,17 +5,18 @@
 
 Gem::Specification.new do |s|
   s.name = %q{occi}
-  s.version = "1.1.0"
+  s.version = "1.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["retr0h"]
-  s.date = %q{2011-01-04}
+  s.date = %q{2011-01-06}
   s.email = %q{john@dewey.ws}
   s.extra_rdoc_files = [
     "LICENSE",
     "README.md"
   ]
   s.files = [
+    ".autotest",
     ".rvmrc",
     "Gemfile",
     "Gemfile.lock",
@@ -25,24 +26,26 @@ Gem::Specification.new do |s|
     "VERSION",
     "lib/occi.rb",
     "lib/occi/client.rb",
-    "lib/occi/entity.rb",
-    "lib/occi/pool.rb",
+    "lib/occi/compute.rb",
+    "lib/occi/network.rb",
+    "lib/occi/resource.rb",
+    "lib/occi/storage.rb",
     "occi.gemspec",
+    "test/fixtures/cassettes/compute_create.yml",
     "test/fixtures/cassettes/compute_delete.yml",
-    "test/fixtures/cassettes/compute_get.yml",
-    "test/fixtures/cassettes/compute_put.yml",
-    "test/fixtures/cassettes/computes_get.yml",
-    "test/fixtures/cassettes/computes_post.yml",
+    "test/fixtures/cassettes/compute_find.yml",
+    "test/fixtures/cassettes/compute_update.yml",
+    "test/fixtures/cassettes/network_all.yml",
+    "test/fixtures/cassettes/network_create.yml",
     "test/fixtures/cassettes/network_delete.yml",
-    "test/fixtures/cassettes/network_get.yml",
-    "test/fixtures/cassettes/networks_get.yml",
-    "test/fixtures/cassettes/networks_post.yml",
+    "test/fixtures/cassettes/network_find.yml",
+    "test/fixtures/cassettes/storage_all.yml",
+    "test/fixtures/cassettes/storage_create.yml",
     "test/fixtures/cassettes/storage_delete.yml",
-    "test/fixtures/cassettes/storage_get.yml",
-    "test/fixtures/cassettes/storages_get.yml",
-    "test/fixtures/cassettes/storages_post.yml",
-    "test/lib/occi/entity_test.rb",
-    "test/lib/occi/pool_test.rb",
+    "test/fixtures/cassettes/storage_find.yml",
+    "test/lib/occi/compute_test.rb",
+    "test/lib/occi/network_test.rb",
+    "test/lib/occi/storage_test.rb",
     "test/test_helper.rb"
   ]
   s.homepage = %q{http://github.com/retr0h/occi}
@@ -50,8 +53,9 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{Ruby bindings to Open Cloud Computing Interface (OCCI).}
   s.test_files = [
-    "test/lib/occi/entity_test.rb",
-    "test/lib/occi/pool_test.rb",
+    "test/lib/occi/compute_test.rb",
+    "test/lib/occi/network_test.rb",
+    "test/lib/occi/storage_test.rb",
     "test/test_helper.rb"
   ]
 
@@ -68,6 +72,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<webmock>, ["~> 1.6.1"])
       s.add_development_dependency(%q<vcr>, ["~> 1.4.0"])
       s.add_development_dependency(%q<minitest>, ["~> 2.0.0"])
+      s.add_development_dependency(%q<ZenTest>, ["~> 4.4.2"])
     else
       s.add_dependency(%q<hugs>, ["~> 2.2.0"])
       s.add_dependency(%q<multipart-post>, ["~> 1.0.1"])
@@ -77,6 +82,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<webmock>, ["~> 1.6.1"])
       s.add_dependency(%q<vcr>, ["~> 1.4.0"])
       s.add_dependency(%q<minitest>, ["~> 2.0.0"])
+      s.add_dependency(%q<ZenTest>, ["~> 4.4.2"])
     end
   else
     s.add_dependency(%q<hugs>, ["~> 2.2.0"])
@@ -87,6 +93,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<webmock>, ["~> 1.6.1"])
     s.add_dependency(%q<vcr>, ["~> 1.4.0"])
     s.add_dependency(%q<minitest>, ["~> 2.0.0"])
+    s.add_dependency(%q<ZenTest>, ["~> 4.4.2"])
   end
 end
 
