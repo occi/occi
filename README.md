@@ -33,13 +33,4 @@ Tests can run offline thanks to [VCR](https://github.com/myronmarston/vcr).
     $ export ONE_USER=$user
     $ export ONE_PASSWORD=$password
 
-    $ bundle exec rake
-
-or
-
-    $ export ONE_...
     $ rake
-
-## TODO
-
-* Should we raise when we do not have expected HTTP code or body?
