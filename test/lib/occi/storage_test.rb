@@ -3,7 +3,7 @@ require "test_helper"
 describe Occi::Storage do
   describe "#all" do
     it "returns a parsed XML document" do
-      VCR.use_cassette "storages_get" do
+      VCR.use_cassette "storage_all" do
         response = Connection.network.all
 
         is_okay response
@@ -33,7 +33,7 @@ describe Occi::Storage do
     end
 
     it "returns a parsed XML document" do
-      VCR.use_cassette "storages_post" do
+      VCR.use_cassette "storage_create" do
         response = Connection.storage.create @upload
 
         is_created response
@@ -43,9 +43,9 @@ describe Occi::Storage do
 
   describe "#find" do
     it "returns a parsed XML document" do
-      id = cassette_for("storages_post").xpath('//ID').text
+      id = cassette_for("storage_create").xpath('//ID').text
 
-      VCR.use_cassette "storage_get" do
+      VCR.use_cassette "storage_find" do
         response = Connection.storage.find id
 
         is_okay response
@@ -55,7 +55,7 @@ describe Occi::Storage do
 
   describe "#delete" do
     it "returns a parsed XML document" do
-      id = cassette_for("storages_post").xpath('//ID').text
+      id = cassette_for("storage_create").xpath('//ID').text
 
       VCR.use_cassette "storage_delete" do
         response = Connection.storage.delete id

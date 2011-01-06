@@ -1,20 +1,11 @@
 --- 
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
-    method: :post
+    method: :get
     uri: http://oneadmin:a9464e3228ae563be6207bbf50437a219550f48b@one.example.com:4567/network
-    body: |
-      <?xml version="1.0"?>
-      <NETWORK>
-        <NAME>Test Framework</NAME>
-        <ADDRESS>192.168.1.1</ADDRESS>
-        <SIZE>200</SIZE>
-      </NETWORK>
-
+    body: 
     headers: 
       accept: 
-      - application/xml
-      content-type: 
       - application/xml
       connection: 
       - keep-alive
@@ -22,16 +13,16 @@
       - 30
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
-      code: 201
-      message: Created
+      code: 200
+      message: OK
     headers: 
       content-type: 
       - text/html;charset=utf-8
       content-length: 
-      - "162"
+      - "313"
       connection: 
       - keep-alive
       server: 
       - thin 1.2.7 codename No Hup
-    body: <NETWORK href="http://cm-01.cloud.int.ev1.atti.com:4567/network/21"><ID>21</ID><NAME>Test Framework</NAME><ADDRESS>192.168.1.1</ADDRESS><SIZE>200</SIZE></NETWORK>
+    body: "<NETWORK_COLLECTION><NETWORK href=\"http://cm-01.cloud.int.ev1.atti.com:4567/network/23\" name=\"10.3.174.0\"/><NETWORK href=\"http://cm-01.cloud.int.ev1.atti.com:4567/network/25\" name=\"10.3.172.0\"/><NETWORK href=\"http://cm-01.cloud.int.ev1.atti.com:4567/network/27\" name=\"Test Framework\"/></NETWORK_COLLECTION>       "
     http_version: "1.1"
