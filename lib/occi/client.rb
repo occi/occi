@@ -1,13 +1,7 @@
-require "hugs"
-require "digest/sha1"
+%w(hugs digest/sha1 occi/network occi/storage occi/compute).each { |r| require r }
 
 module Occi
-  Paths = %w{ compute network storage }
   class Client
-    require "occi/network"
-    require "occi/storage"
-    require "occi/compute"
-
     ##
     # Required:
     # +user+: A String containing the username for use in HTTP Basic auth.
