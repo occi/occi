@@ -11,6 +11,10 @@ module Occi
       end
     end
 
+    def entity id
+      "#{endpoint}/#{id}"
+    end
+
     ##
     # Returns the contents of the pool.
     # 200 OK: An XML representation of the pool in the http body.
@@ -33,7 +37,7 @@ module Occi
     # 202 Accepted : The update request is being process, polling required to confirm update.
 
     def update id, body
-      @connection.put "#{endpoint}/#{id}", :body => body
+      @connection.put entity(id), :body => body
     end
 
     ##
@@ -41,7 +45,7 @@ module Occi
     # 200 OK: An XML representation of the pool in the http body.
 
     def find id
-      @connection.get "#{endpoint}/#{id}"
+      @connection.get entity(id)
     end
 
     ##
@@ -49,7 +53,7 @@ module Occi
     # 204 No Content : The Compute has been successfully deleted.
 
     def delete id
-      @connection.delete "#{endpoint}/#{id}"
+      @connection.delete entity(id)
     end
   end
 end
