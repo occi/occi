@@ -1,11 +1,18 @@
 --- 
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
-    method: :get
+    method: :put
     uri: http://oneadmin:a9464e3228ae563be6207bbf50437a219550f48b@one.example.com:4567/compute/167
-    body: 
+    body: |
+      <?xml version="1.0"?>
+      <COMPUTE>
+        <STATE>shutdown</STATE>
+      </COMPUTE>
+
     headers: 
       accept: 
+      - application/xml
+      content-type: 
       - application/xml
       connection: 
       - keep-alive
@@ -13,8 +20,8 @@
       - 30
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
-      code: 200
-      message: OK
+      code: 202
+      message: Accepted
     headers: 
       content-type: 
       - text/html;charset=utf-8

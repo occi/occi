@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :delete
-    uri: http://oneadmin:a9464e3228ae563be6207bbf50437a219550f48b@one.example.com:4567/compute/166
+    uri: http://oneadmin:a9464e3228ae563be6207bbf50437a219550f48b@one.example.com:4567/compute/167
     body: 
     headers: 
       accept: 
