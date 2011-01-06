@@ -1,4 +1,4 @@
-require 'bundler'
+require "bundler"
 Bundler.setup :default, :test
 
 %w(minitest/autorun minitest/spec nokogiri vcr webmock occi).each { |r| require r }
