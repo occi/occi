@@ -3,7 +3,7 @@ require "test_helper"
 describe Occi::Network do
   describe "#all" do
     it "returns a parsed XML document" do
-      VCR.use_cassette "networks_get" do
+      VCR.use_cassette "network_all" do
         response = Connection.network.all
 
         is_okay response
@@ -23,7 +23,7 @@ describe Occi::Network do
     end
 
     it "returns a parsed XML document" do
-      VCR.use_cassette "networks_post" do
+      VCR.use_cassette "network_create" do
         response = Connection.network.create @builder
 
         is_created response
@@ -33,9 +33,9 @@ describe Occi::Network do
 
   describe "#find" do
     it "returns a parsed XML document" do
-      id = cassette_for("networks_post").xpath('//ID').text
+      id = cassette_for("network_create").xpath('//ID').text
 
-      VCR.use_cassette "network_get" do
+      VCR.use_cassette "network_find" do
         response = Connection.network.find id
 
         is_okay response
@@ -45,7 +45,7 @@ describe Occi::Network do
 
   describe "#delete" do
     it "returns a parsed XML document" do
-      id = cassette_for("networks_post").xpath('//ID').text
+      id = cassette_for("network_create").xpath('//ID').text
 
       VCR.use_cassette "network_delete" do
         response = Connection.network.delete id

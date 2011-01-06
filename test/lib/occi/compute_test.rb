@@ -3,7 +3,7 @@ require "test_helper"
 describe Occi::Compute do
   describe "#all" do
     it "returns a parsed XML document" do
-      VCR.use_cassette "computes_get" do
+      VCR.use_cassette "compute_all" do
         response = Connection.compute.all
 
         is_okay response
@@ -27,7 +27,7 @@ describe Occi::Compute do
             STORAGE(:href => "http://www.opennebula.org/storage/11")
           }
           NIC {
-            NETWORK(:href => "http://www.opennebula.org/network/14")
+            NETWORK(:href => "http://www.opennebula.org/network/25")
           }
           CONTEXT {
             NETWORK_NAME "10.3.172.0"
@@ -37,7 +37,7 @@ describe Occi::Compute do
     end
 
     it "returns a parsed XML document" do
-      VCR.use_cassette "computes_post" do
+      VCR.use_cassette "compute_create" do
         response = Connection.compute.create @builder
 
         is_created response
@@ -47,9 +47,9 @@ describe Occi::Compute do
 
   describe "#find" do
     it "returns a parsed XML document" do
-      id = cassette_for("computes_post").xpath('//ID').text
+      id = cassette_for("compute_create").xpath('//ID').text
 
-      VCR.use_cassette "compute_get" do
+      VCR.use_cassette "compute_find" do
         response = Connection.compute.find id
 
         is_okay response
@@ -59,7 +59,7 @@ describe Occi::Compute do
 
   describe "#delete" do
     it "returns a parsed XML document" do
-      id = cassette_for("computes_post").xpath('//ID').text
+      id = cassette_for("compute_create").xpath('//ID').text
 
       VCR.use_cassette "compute_delete" do
         response = Connection.compute.delete id
@@ -69,22 +69,22 @@ describe Occi::Compute do
     end
   end
 
-  describe "#update" do
-    before do
-      @builder = Nokogiri::XML::Builder.new do
-        COMPUTE {
-          STATE "shutdown"
-        }
-      end.to_xml
-    end
+  #describe "#update" do
+  #  before do
+  #    @builder = Nokogiri::XML::Builder.new do
+  #      COMPUTE {
+  #        STATE "shutdown"
+  #      }
+  #    end.to_xml
+  #  end
 
-    it "returns a parsed XML document" do
-      id = "134"
-      VCR.use_cassette "compute_put" do
-        response = Connection.compute.update id, :body => @builder
+  #  it "returns a parsed XML document" do
+  #    id = "134"
+  #    VCR.use_cassette "compute_update" do
+  #      response = Connection.compute.update id, :body => @builder
 
-        is_accepted response
-      end
-    end
-  end
+  #      is_accepted response
+  #    end
+  #  end
+  #end
 end
