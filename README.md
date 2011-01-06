@@ -35,6 +35,11 @@ Tests can run offline thanks to [VCR](https://github.com/myronmarston/vcr).
 
     $ bundle exec rake
 
+or
+
+    $ export ONE_...
+    $ rake
+
 ## TODO
 
 * Should we raise when we do not have expected HTTP code or body?

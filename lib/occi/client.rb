@@ -6,6 +6,7 @@ module Occi
   class Client
     require "occi/pool"
     require "occi/entity"
+    require "occi/network"
     include Occi::Pool, Occi::Entity
 
     ##
@@ -29,6 +30,10 @@ module Occi
 
     def request
       @connection
+    end
+
+    def network
+      Occi::Network.new @connection
     end
   end
 end
