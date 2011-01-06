@@ -6,8 +6,8 @@ Bundler.setup :default, :test
 class MiniTest::Unit::TestCase
   Connection = Occi::Client.new(
     :host     => "one.example.com",
-    :user     => ENV['ONE_USER']     || 'oneadmin',
-    :password => ENV['ONE_PASSWORD'] || 'cl0udt3am',
+    :user     => ENV['ONE_USER'],
+    :password => ENV['ONE_PASSWORD'],
   )
 
   def okay response, code
