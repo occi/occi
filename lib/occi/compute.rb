@@ -42,8 +42,7 @@ module Occi
     # 202 Accepted : The update request is being process, polling required to confirm update.
 
     def update id, builder
-      @connection.put "/compute/#{id}"
+      @connection.put "/compute/#{id}", :body => builder
     end
-
   end
 end
