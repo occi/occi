@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{occi}
-  s.version = "1.2.0"
+  s.version = "1.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["retr0h"]
-  s.date = %q{2011-01-06}
+  s.date = %q{2011-01-13}
   s.email = %q{john@dewey.ws}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -31,17 +31,18 @@ Gem::Specification.new do |s|
     "lib/occi/resource.rb",
     "lib/occi/storage.rb",
     "occi.gemspec",
+    "test/fixtures/cassettes/compute_all.yml",
     "test/fixtures/cassettes/compute_create.yml",
-    "test/fixtures/cassettes/compute_delete.yml",
+    "test/fixtures/cassettes/compute_destroy.yml",
     "test/fixtures/cassettes/compute_find.yml",
     "test/fixtures/cassettes/compute_update.yml",
     "test/fixtures/cassettes/network_all.yml",
     "test/fixtures/cassettes/network_create.yml",
-    "test/fixtures/cassettes/network_delete.yml",
+    "test/fixtures/cassettes/network_destroy.yml",
     "test/fixtures/cassettes/network_find.yml",
     "test/fixtures/cassettes/storage_all.yml",
     "test/fixtures/cassettes/storage_create.yml",
-    "test/fixtures/cassettes/storage_delete.yml",
+    "test/fixtures/cassettes/storage_destroy.yml",
     "test/fixtures/cassettes/storage_find.yml",
     "test/lib/occi/compute_test.rb",
     "test/lib/occi/network_test.rb",
@@ -64,33 +65,33 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<hugs>, ["~> 2.2.0"])
+      s.add_runtime_dependency(%q<hugs>, ["~> 2.3.0"])
       s.add_runtime_dependency(%q<multipart-post>, ["~> 1.0.1"])
       s.add_runtime_dependency(%q<nokogiri>, ["~> 1.4.4"])
       s.add_development_dependency(%q<rake>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.5.1"])
-      s.add_development_dependency(%q<webmock>, ["~> 1.6.1"])
+      s.add_development_dependency(%q<webmock>, ["~> 1.6.2"])
       s.add_development_dependency(%q<vcr>, ["~> 1.4.0"])
       s.add_development_dependency(%q<minitest>, ["~> 2.0.0"])
       s.add_development_dependency(%q<ZenTest>, ["~> 4.4.2"])
     else
-      s.add_dependency(%q<hugs>, ["~> 2.2.0"])
+      s.add_dependency(%q<hugs>, ["~> 2.3.0"])
       s.add_dependency(%q<multipart-post>, ["~> 1.0.1"])
       s.add_dependency(%q<nokogiri>, ["~> 1.4.4"])
       s.add_dependency(%q<rake>, [">= 0"])
       s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
-      s.add_dependency(%q<webmock>, ["~> 1.6.1"])
+      s.add_dependency(%q<webmock>, ["~> 1.6.2"])
       s.add_dependency(%q<vcr>, ["~> 1.4.0"])
       s.add_dependency(%q<minitest>, ["~> 2.0.0"])
       s.add_dependency(%q<ZenTest>, ["~> 4.4.2"])
     end
   else
-    s.add_dependency(%q<hugs>, ["~> 2.2.0"])
+    s.add_dependency(%q<hugs>, ["~> 2.3.0"])
     s.add_dependency(%q<multipart-post>, ["~> 1.0.1"])
     s.add_dependency(%q<nokogiri>, ["~> 1.4.4"])
     s.add_dependency(%q<rake>, [">= 0"])
     s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
-    s.add_dependency(%q<webmock>, ["~> 1.6.1"])
+    s.add_dependency(%q<webmock>, ["~> 1.6.2"])
     s.add_dependency(%q<vcr>, ["~> 1.4.0"])
     s.add_dependency(%q<minitest>, ["~> 2.0.0"])
     s.add_dependency(%q<ZenTest>, ["~> 4.4.2"])
