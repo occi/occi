@@ -2,13 +2,13 @@ require "test_helper"
 
 describe Occi::Compute do
   describe "#all" do
-    #it "returns a parsed XML document" do
-    #  VCR.use_cassette "compute_all" do
-    #    response = Connection.compute.all
+    it "returns a parsed XML document" do
+      VCR.use_cassette "compute_all" do
+        response = Connection.compute.all
 
-    #    is_okay response
-    #  end
-    #end
+        is_okay response
+      end
+    end
   end
 
   describe "#create" do
@@ -19,7 +19,7 @@ describe Occi::Compute do
       # boot.  Then we no longer need the coupling in the XML.
       # CLOUD-35 open to address this.
 
-      @builder = Nokogiri::XML::Builder.new do
+      @xml = Nokogiri::XML::Builder.new do
         COMPUTE {
           NAME "Test Framework"
           INSTANCE_TYPE "small"
@@ -38,7 +38,7 @@ describe Occi::Compute do
 
     it "returns a parsed XML document" do
       VCR.use_cassette "compute_create" do
-        response = Connection.compute.create @builder
+        response = Connection.compute.create @xml
 
         is_created response
       end
@@ -71,7 +71,7 @@ describe Occi::Compute do
 
   describe "#update" do
     before do
-      @builder = Nokogiri::XML::Builder.new do
+      @xml = Nokogiri::XML::Builder.new do
         COMPUTE {
           STATE "shutdown"
         }
@@ -82,7 +82,7 @@ describe Occi::Compute do
       id = cassette_for("compute_create").xpath('//ID').text
 
       VCR.use_cassette "compute_update" do
-        response = Connection.compute.update id, @builder
+        response = Connection.compute.update id, @xml
 
         is_accepted response
       end

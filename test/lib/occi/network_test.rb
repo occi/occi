@@ -13,7 +13,7 @@ describe Occi::Network do
 
   describe "#create" do
     before do
-      @builder = Nokogiri::XML::Builder.new do
+      @xml = Nokogiri::XML::Builder.new do
         NETWORK {
           NAME "Test Framework"
           ADDRESS "192.168.1.1"
@@ -24,7 +24,7 @@ describe Occi::Network do
 
     it "returns a parsed XML document" do
       VCR.use_cassette "network_create" do
-        response = Connection.network.create @builder
+        response = Connection.network.create @xml
 
         is_created response
       end

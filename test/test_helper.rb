@@ -11,8 +11,8 @@ class MiniTest::Unit::TestCase
   )
 
   def okay response, code
-    response.body.must_be_kind_of Nokogiri::XML::Document
     response.code.must_equal code
+    response.body.errors.must_be_empty
   end
 
   def is_okay response

@@ -13,7 +13,7 @@ describe Occi::Storage do
 
   describe "#create" do
     before do
-      @builder = Nokogiri::XML::Builder.new do
+      @xml = Nokogiri::XML::Builder.new do
         STORAGE {
           NAME "Test Framework"
           DESCRIPTION "Test Framework Image."
@@ -26,7 +26,7 @@ describe Occi::Storage do
       @upload = {
         :parts => {
           :file    => "/dev/null",
-          :occixml => @builder,
+          :occixml => @xml,
         },
         :content_type => "application/octet-stream"
       }

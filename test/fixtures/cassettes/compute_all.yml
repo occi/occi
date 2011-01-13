@@ -1,0 +1,28 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://oneadmin:a9464e3228ae563be6207bbf50437a219550f48b@one.example.com:4567/compute
+    body: 
+    headers: 
+      accept: 
+      - application/xml
+      connection: 
+      - keep-alive
+      keep-alive: 
+      - 30
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      content-type: 
+      - text/html;charset=utf-8
+      content-length: 
+      - "799"
+      connection: 
+      - keep-alive
+      server: 
+      - thin 1.2.7 codename No Hup
+    body: "<COMPUTE_COLLECTION><COMPUTE href=\"http://cm-01.cloud.int.ev1.atti.com:4567/compute/150\" name=\"Centos-5-4_x86_64\"/><COMPUTE href=\"http://cm-01.cloud.int.ev1.atti.com:4567/compute/164\" name=\"Centos-5-4_x86_64\"/><COMPUTE href=\"http://cm-01.cloud.int.ev1.atti.com:4567/compute/170\" name=\"Centos-5-4_x86_64\"/><COMPUTE href=\"http://cm-01.cloud.int.ev1.atti.com:4567/compute/171\" name=\"Centos-5-4_x86_64\"/><COMPUTE href=\"http://cm-01.cloud.int.ev1.atti.com:4567/compute/172\" name=\"Centos-5-4_x86_64\"/><COMPUTE href=\"http://cm-01.cloud.int.ev1.atti.com:4567/compute/174\" name=\"Test Framework\"/><COMPUTE href=\"http://cm-01.cloud.int.ev1.atti.com:4567/compute/175\" name=\"Test Framework\"/><COMPUTE href=\"http://cm-01.cloud.int.ev1.atti.com:4567/compute/176\" name=\"Test Framework\"/></COMPUTE_COLLECTION>       "
+    http_version: "1.1"
