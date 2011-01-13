@@ -4,7 +4,7 @@ describe Occi::Network do
   describe "#all" do
     it "returns a parsed XML document" do
       VCR.use_cassette "network_all" do
-        response = Connection.network.all
+        response = CONNECTION.network.all
 
         is_okay response
       end
@@ -24,7 +24,7 @@ describe Occi::Network do
 
     it "returns a parsed XML document" do
       VCR.use_cassette "network_create" do
-        response = Connection.network.create @xml
+        response = CONNECTION.network.create @xml
 
         is_created response
       end
@@ -36,7 +36,7 @@ describe Occi::Network do
       id = cassette_for("network_create").xpath('//ID').text
 
       VCR.use_cassette "network_find" do
-        response = Connection.network.find id
+        response = CONNECTION.network.find id
 
         is_okay response
       end
@@ -48,7 +48,7 @@ describe Occi::Network do
       id = cassette_for("network_create").xpath('//ID').text
 
       VCR.use_cassette "network_destroy" do
-        response = Connection.network.destroy id
+        response = CONNECTION.network.destroy id
 
         is_no_content response
       end

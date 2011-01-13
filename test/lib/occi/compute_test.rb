@@ -4,7 +4,7 @@ describe Occi::Compute do
   describe "#all" do
     it "returns a parsed XML document" do
       VCR.use_cassette "compute_all" do
-        response = Connection.compute.all
+        response = CONNECTION.compute.all
 
         is_okay response
       end
@@ -38,7 +38,7 @@ describe Occi::Compute do
 
     it "returns a parsed XML document" do
       VCR.use_cassette "compute_create" do
-        response = Connection.compute.create @xml
+        response = CONNECTION.compute.create @xml
 
         is_created response
       end
@@ -50,7 +50,7 @@ describe Occi::Compute do
       id = cassette_for("compute_create").xpath('//ID').text
 
       VCR.use_cassette "compute_find" do
-        response = Connection.compute.find id
+        response = CONNECTION.compute.find id
 
         is_okay response
       end
@@ -62,7 +62,7 @@ describe Occi::Compute do
       id = cassette_for("compute_create").xpath('//ID').text
 
       VCR.use_cassette "compute_destroy" do
-        response = Connection.compute.destroy id
+        response = CONNECTION.compute.destroy id
 
         is_no_content response
       end
@@ -82,7 +82,7 @@ describe Occi::Compute do
       id = cassette_for("compute_create").xpath('//ID').text
 
       VCR.use_cassette "compute_update" do
-        response = Connection.compute.update id, @xml
+        response = CONNECTION.compute.update id, @xml
 
         is_accepted response
       end

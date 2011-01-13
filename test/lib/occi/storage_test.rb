@@ -4,7 +4,7 @@ describe Occi::Storage do
   describe "#all" do
     it "returns a parsed XML document" do
       VCR.use_cassette "storage_all" do
-        response = Connection.network.all
+        response = CONNECTION.network.all
 
         is_okay response
       end
@@ -34,7 +34,7 @@ describe Occi::Storage do
 
     it "returns a parsed XML document" do
       VCR.use_cassette "storage_create" do
-        response = Connection.storage.create @upload
+        response = CONNECTION.storage.create @upload
 
         is_created response
       end
@@ -46,7 +46,7 @@ describe Occi::Storage do
       id = cassette_for("storage_create").xpath('//ID').text
 
       VCR.use_cassette "storage_find" do
-        response = Connection.storage.find id
+        response = CONNECTION.storage.find id
 
         is_okay response
       end
@@ -58,7 +58,7 @@ describe Occi::Storage do
       id = cassette_for("storage_create").xpath('//ID').text
 
       VCR.use_cassette "storage_destroy" do
-        response = Connection.storage.destroy id
+        response = CONNECTION.storage.destroy id
 
         is_no_content response
       end
