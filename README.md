@@ -16,7 +16,7 @@ See the examples section in the [wiki](http://github.com/retr0h/occi/wiki).
 
 ## Compatability
 
-ruby 1.9.2p0
+ruby 1.9.2
 
 OCCI API|OCCI Rubygem|OpenNebula
 --------|------------|----------
