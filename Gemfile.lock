@@ -1,7 +1,6 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    ZenTest (4.4.2)
     addressable (2.2.2)
     crack (0.1.8)
     git (1.2.5)
@@ -29,7 +28,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ZenTest (~> 4.4.2)
   hugs (~> 2.3.0)
   jeweler (~> 1.5.1)
   minitest (~> 2.0.0)
@@ -37,4 +35,4 @@ DEPENDENCIES
   nokogiri (~> 1.4.4)
   rake
   vcr (~> 1.4.0)
-  webmock (~> 1.6.1)
+  webmock (~> 1.6.2)

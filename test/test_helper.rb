@@ -1,7 +1,11 @@
-require "bundler"
 Bundler.setup :default, :test
 
-%w(minitest/autorun minitest/spec nokogiri vcr webmock occi).each { |r| require r }
+require "occi"
+
+require "minitest/spec"
+require "nokogiri"
+require "vcr"
+require "webmock"
 
 class MiniTest::Unit::TestCase
   CONNECTION = Occi::Client.new(

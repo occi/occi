@@ -1,4 +1,10 @@
-%w(hugs digest/sha1 occi/resource occi/network occi/storage occi/compute).each { |r| require r }
+require "occi/resource"
+require "occi/network"
+require "occi/storage"
+require "occi/compute"
+
+require "hugs"
+require "digest/sha1"
 
 module Occi
   class Client
