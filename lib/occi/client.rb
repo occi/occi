@@ -1,6 +1,7 @@
+require "occi/resource"
+
 require "occi/compute"
 require "occi/network"
-require "occi/resource"
 require "occi/storage"
 
 require "digest/sha1"
