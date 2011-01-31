@@ -1,18 +1,21 @@
+PATH
+  remote: .
+  specs:
+    occi (1.4.0)
+      hugs (~> 2.3.0)
+      multipart-post (~> 1.0.1)
+      nokogiri (~> 1.4.4)
+
 GEM
   remote: http://rubygems.org/
   specs:
     addressable (2.2.2)
     crack (0.1.8)
-    git (1.2.5)
     hugs (2.3.0)
       multipart-post (~> 1.0.1)
       net-http-persistent (~> 1.4.1)
       nokogiri (~> 1.4.4)
       yajl-ruby (~> 0.7.8)
-    jeweler (1.5.2)
-      bundler (~> 1.0.0)
-      git (>= 1.2.5)
-      rake
     minitest (2.0.2)
     multipart-post (1.0.1)
     net-http-persistent (1.4.1)
@@ -28,11 +31,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  hugs (~> 2.3.0)
-  jeweler (~> 1.5.1)
-  minitest (~> 2.0.0)
-  multipart-post (~> 1.0.1)
-  nokogiri (~> 1.4.4)
+  minitest
+  occi!
   rake
-  vcr (~> 1.4.0)
-  webmock (~> 1.6.2)
+  vcr
+  webmock
