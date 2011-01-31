@@ -1,3 +1,3 @@
 module Occi
-  VERSION = "1.4.0"
+  VERSION = "1.2.0"
 end
