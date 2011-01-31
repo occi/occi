@@ -1,10 +1,10 @@
-require "occi/resource"
-require "occi/network"
-require "occi/storage"
 require "occi/compute"
+require "occi/network"
+require "occi/resource"
+require "occi/storage"
 
-require "hugs"
 require "digest/sha1"
+require "hugs"
 
 module Occi
   class Client
